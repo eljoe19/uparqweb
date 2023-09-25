@@ -11,9 +11,9 @@ El sistema podrá generar un reporte de stock indicando el estado de cada cosa (
 **API ENDPOINTS**  
 **---- CRUD de objetos para ser alquilados ---**  
 Crear nuevo objeto: POST /api/v1/objetos?nombre=xxx&descripcion=xxx&categoria=xxx  
-Actualizar objeto: PUT /api/v1/objetos/id?nombre=xxx&descripcion=xxx&categoria=xxx  
-Borrar un objeto: DELETE /api/v1/objetos/id  
-Obtener un objeto: GET /api/v1/objetos/id  
+Actualizar objeto: PUT /api/v1/objetos/id_objeto?nombre=xxx&descripcion=xxx&categoria=xxx  
+Borrar un objeto: DELETE /api/v1/objetos/id_objeto  
+Obtener un objeto: GET /api/v1/objetos/id_objeto  
 
 **---- Gestionar Alquiler/Devolucion ----**  
 Alquilar un objeto: POST /api/v1/alquileres/id_objeto?fecha_inicio=xxxx&fecha_fin=xxx  
