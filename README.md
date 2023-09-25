@@ -8,22 +8,21 @@ El sistema permitirá agregar, modificar, eliminar o leer los objetos para ser a
 El sistema permitirá marcar un objeto como alquilado.
 El sistema podrá generar un reporte de stock indicando el estado de cada cosa (si esta alquilado o no).
 
-API ENDPOINTS
-*************
------ CRUD de objetos para ser alquilados ------------
-Crear nuevo objeto: POST /api/v1/objetos?nombre=xxx&descripcion=xxx&categoria=xxx
-Actualizar objeto: PUT /api/v1/objetos/id?nombre=xxx&descripcion=xxx&categoria=xxx
-Borrar un objeto: DELETE /api/v1/objetos/id
-Obtener un objeto: GET /api/v1/objetos/id
+**API ENDPOINTS**  
+**---- CRUD de objetos para ser alquilados ---**  
+Crear nuevo objeto: POST /api/v1/objetos?nombre=xxx&descripcion=xxx&categoria=xxx  
+Actualizar objeto: PUT /api/v1/objetos/id?nombre=xxx&descripcion=xxx&categoria=xxx  
+Borrar un objeto: DELETE /api/v1/objetos/id  
+Obtener un objeto: GET /api/v1/objetos/id  
 Obtener todos los objetos de una categoria:/api/v1/objetos?categoria=xxx
 
----- Gestionar Alquiler/Devolucion ------
-Alquilar un objeto: POST /api/v1/alquileres/id_objeto?fecha_inicio=xxxx&fecha_fin=xxx
+**---- Gestionar Alquiler/Devolucion ----**  
+Alquilar un objeto: POST /api/v1/alquileres/id_objeto?fecha_inicio=xxxx&fecha_fin=xxx  
 Registrar devolucion: POST /api/v1/devoluciones/id_objeto?fecha_devolucion=xxxx
 
----- Listado de Stock -----
+**---- Listado de Stock ----**  
 Obtener todos los objetos: /api/v1/objetos
 
----- Listado de Alquileres Activos ----------------
+**---- Listado de Alquileres Activos ----**  
 Obtener listado de objetos alquilados: GET /api/v1/alquileres
 
