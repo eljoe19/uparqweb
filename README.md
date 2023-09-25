@@ -14,7 +14,6 @@ Crear nuevo objeto: POST /api/v1/objetos?nombre=xxx&descripcion=xxx&categoria=xx
 Actualizar objeto: PUT /api/v1/objetos/id?nombre=xxx&descripcion=xxx&categoria=xxx  
 Borrar un objeto: DELETE /api/v1/objetos/id  
 Obtener un objeto: GET /api/v1/objetos/id  
-Obtener todos los objetos de una categoria:/api/v1/objetos?categoria=xxx
 
 **---- Gestionar Alquiler/Devolucion ----**  
 Alquilar un objeto: POST /api/v1/alquileres/id_objeto?fecha_inicio=xxxx&fecha_fin=xxx  
@@ -22,6 +21,7 @@ Registrar devolucion: POST /api/v1/devoluciones/id_objeto?fecha_devolucion=xxxx
 
 **---- Listado de Stock ----**  
 Obtener todos los objetos: /api/v1/objetos
+Obtener todos los objetos de una categoria:/api/v1/objetos?categoria=xxx
 
 **---- Listado de Alquileres Activos ----**  
 Obtener listado de objetos alquilados: GET /api/v1/alquileres
