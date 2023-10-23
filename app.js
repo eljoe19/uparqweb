@@ -14,13 +14,15 @@ app.get('/', (req, res) => {
         console.error(err);
       }
       // file written successfully
-      res.send('Hola Mundo Success!');
+      //res.send('Hola Mundo Success!');
+      fs.readFile('test.txt', 'utf8', function(err, data){ 
+        // Display the file content 
+        res.send(data);
+    }); 
+
     });
 
-    fs.readFile('test.txt', 'utf8', function(err, data){ 
-      // Display the file content 
-      res.send(data);
-  }); 
+
 
    // res.send('Hola Mundo Final!');
     
