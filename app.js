@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
       //res.send('Hola Mundo Success!');
       fs.readFile('test.txt', 'utf8', function(err, data){ 
         // Display the file content 
-        res.send("enviando data");
+        res.send(data);
     }); 
 
     });
