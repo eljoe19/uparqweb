@@ -7,7 +7,8 @@ const content = 'Contenido del archivo de text';
 
 app.get('/', (req, res) => {
    
-      //el archivo persiste entre requests
+  res.status(201);
+  //el archivo persiste entre requests
     fs.writeFile('test.txt', content, err => {
       if (err) {
         res.send('ERROR AL ESCRIBIR EL ARCHIVO! '+ err);
