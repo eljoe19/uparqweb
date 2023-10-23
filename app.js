@@ -29,7 +29,13 @@ app.get('/', (req, res) => {
   });
 
 app.get('/bienvenido', (req, res) => {
-  res.send('Bienvenido!');
+  //res.send('Bienvenido!');
+  fs.readFile('test.txt', 'utf8', function(err, data){ 
+    // Display the file content 
+    res.send(data);
+}); 
+
+
 });
 
 app.get('/alumno', (req, res) => {
