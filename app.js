@@ -4,6 +4,14 @@ const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.send('Hola Mundo!');
+
+    fs.writeFile('test.txt', content, err => {
+      if (err) {
+        console.error(err);
+      }
+      // file written successfully
+    });
+    
   });
 
 app.get('/bienvenido', (req, res) => {
