@@ -7,12 +7,11 @@ const content = 'Contenido del archivo de text';
 
 app.get('/', (req, res) => {
    
-    
-    //el archivo persiste entre requests
+      //el archivo persiste entre requests
     fs.writeFile('/home/joe/test.txt', content, err => {
       if (err) {
-        res.send('ERROR AL ESCRIBIR EL ARCHIVO!');
-        console.error(err);
+        res.send('ERROR AL ESCRIBIR EL ARCHIVO! '+ err);
+        //console.error(err);
       }
       // file written successfully
       //res.send('Hola Mundo Success!');
