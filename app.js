@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const fs = require('fs');
-const content = 'Contenido del archivo de text';
+const content = 'Contenido del archivo de texto.';
 
 app.get('/', (req, res) => {
    
@@ -15,7 +15,8 @@ app.get('/', (req, res) => {
       // file written successfully
       fs.readFile('test.txt', 'utf8', function(err, data){ 
           // Display the file content 
-          res.status(201).send(data + ' ' + req.method);
+          res.status(201);
+          res.send(data + ' ' + req.method);
       }); 
 
     });
