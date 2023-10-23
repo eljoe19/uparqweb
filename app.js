@@ -7,8 +7,7 @@ const content = 'Contenido del archivo de text';
 
 app.get('/', (req, res) => {
    
-  res.status(201);
-  //el archivo persiste entre requests
+    //el archivo persiste entre requests
     fs.writeFile('test.txt', content, err => {
       if (err) {
         res.send('ERROR AL ESCRIBIR EL ARCHIVO! '+ err);
@@ -16,7 +15,7 @@ app.get('/', (req, res) => {
       // file written successfully
       fs.readFile('test.txt', 'utf8', function(err, data){ 
           // Display the file content 
-         res.send(data);
+          res.status(201).send(data);
       }); 
 
     });
