@@ -2,15 +2,22 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hola Mundo!');
+const fs = require('fs');
+const content = 'Some content!';
 
+
+app.get('/', (req, res) => {
+   
     fs.writeFile('test.txt', content, err => {
       if (err) {
+        res.send('Hola Mundo ERROR!');
         console.error(err);
       }
       // file written successfully
+      res.send('Hola Mundo Success!');
     });
+
+    res.send('Hola Mundo Final!');
     
   });
 
