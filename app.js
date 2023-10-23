@@ -3,8 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const fs = require('fs');
-const content = 'Some content!';
-
+const content = 'Contenido del archivo de text';
 
 app.get('/', (req, res) => {
    
