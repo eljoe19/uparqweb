@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
       // file written successfully
       fs.readFile('test.txt', 'utf8', function(err, data){ 
           // Display the file content 
-          res.status(201);
+          res.status(200);
           res.send(data + ' ' + req.method);
       }); 
 
