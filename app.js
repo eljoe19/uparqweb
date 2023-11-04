@@ -14,7 +14,7 @@ app.post('/objetos',(req,res)=>{
         return res.send("Debe pasar los parametros CODIGO, NOMBRE, DESC y CATEGORIA");
   }else{
     //guardo nuevo objeto en txt
-    valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
+    let valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     if(valorRes){
       res.status(200);
       return res.send("Nombre: " + valorRes);
@@ -34,7 +34,7 @@ function guardarNuevoObjeto(codigo,nombre,desc,categoria){
       //res.send('ERROR AL ESCRIBIR EL ARCHIVO! '+ err);
       return false;
     }
-    // file written successfully
+    //file written successfully
       return true; 
   });
 };
