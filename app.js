@@ -9,7 +9,7 @@ const content = 'Contenido del archivo de texto.';
 app.post('/objetos',(req,res)=>{
   
   //verifico que existan parametros
-  if(!req.params){
+  if(!req.params || !req.params.nombre ){
         res.status(400);
         return res.send("NO PARAMS PASSED");
   }else{
