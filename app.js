@@ -5,6 +5,16 @@ const port = process.env.PORT || 3000;
 const fs = require('fs');
 const content = 'Contenido del archivo de texto.';
 
+
+app.post('/objetos',(req,res)=>{
+  res.send(req.method + ': nuevo objeto');
+
+
+});
+app.get('/objetos',(req,res)=>{
+  res.send(req.method + ': listado de objetos');
+});
+
 app.get('/', (req, res) => {
    
     //el archivo persiste entre requests
