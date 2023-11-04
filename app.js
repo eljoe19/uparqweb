@@ -14,7 +14,7 @@ app.post('/objetos',(req,res)=>{
         return res.send("Debe pasar los parametros CODIGO, NOMBRE, DESC y CATEGORIA");
   }else{
     //guardo nuevo objeto en txt
-    var valorTest=true;
+    var valorTest=guardarNuevoObjeto2();
     var valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     if(valorRes){
       res.status(200);
@@ -27,6 +27,9 @@ app.post('/objetos',(req,res)=>{
   }
 });
 
+function guardarNuevoObjeto2(){
+    return false;
+};
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   
   nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
