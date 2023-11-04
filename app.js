@@ -15,7 +15,7 @@ app.post('/objetos',(req,res)=>{
   }else{
     //guardo nuevo objeto en txt
     var valorTest=guardarNuevoObjeto2();
-    var valorRes= await guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
+    var valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     if(valorRes){
       res.status(200);
       return res.send("OK - ValorRes: " + valorRes + ' ValorTest: ' + valorTest);
@@ -29,17 +29,9 @@ app.post('/objetos',(req,res)=>{
 function guardarNuevoObjeto2(){
     return true;
 };
-async function guardarNuevoObjeto(codigo,nombre,desc,categoria){
-  
+function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
-  await fs.writeFile(pathArchivoTXT, nuevoObj, err => {
-    if (err) {
-      //res.send('ERROR AL ESCRIBIR EL ARCHIVO! '+ err);
-      return false;
-    }
-    //file written successfully
-      return true; 
-  });
+  fs.writeFileSync(pathArchivoTXT, nuevoObj);
 };
 
 
