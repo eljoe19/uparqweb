@@ -35,7 +35,7 @@ app.get('/objetos',(req,res)=>{
 // file written successfully
       fs.readFile(pathArchivoTXT, 'utf8', function(err, data){ 
           // Display the file content 
-          var myarray = data.split('\n\r');
+          var myarray = data.split('\r\n');
           var html='';
           for(var i = 0; i < myarray.length; i++)
           {
