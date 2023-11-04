@@ -28,7 +28,7 @@ app.post('/objetos',(req,res)=>{
 });
 
 function guardarNuevoObjeto2(){
-    return false;
+    return true;
 };
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   
