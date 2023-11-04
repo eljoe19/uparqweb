@@ -6,7 +6,8 @@ const fs = require('fs');
 const pathArchivoTXT = 'dbObjetos2.txt';
 
 app.post('/objetos',(req,res)=>{
-  
+  /***** AGREGO UN OBJETO AL SISTEMA ******/
+
   //verifico que existan parametros
   if(!req.query || !req.query.codigo || !req.query.nombre || !req.query.desc || !req.query.categoria ){
         res.status(400);
@@ -35,20 +36,19 @@ function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   }
 };
 
-
 app.get('/objetos',(req,res)=>{
-// file written successfully
-      fs.readFile(pathArchivoTXT, 'utf8', function(err, data){ 
-          // Display the file content 
-          var myarray = data.split('\r\n');
-          var html='';
-          for(var i = 0; i < myarray.length; i++)
-          {
-            html=html + myarray[i] + '<br>';
-          }
-          res.status(200);
-          res.send(html);
-      });
+  /***** OBTENGO UN LISTADO DE OBJETOS DEL SISTEMA ******/
+  fs.readFile(pathArchivoTXT, 'utf8', function(err, data){ 
+    // Display the file content 
+    var myarray = data.split('\r\n');
+    var html='';
+    for(var i = 0; i < myarray.length; i++)
+      {
+       html=html + myarray[i] + '<br>';
+      }
+      res.status(200);
+      res.send(html);
+  });
 });
 
 app.get('/', (req, res) => {
