@@ -52,7 +52,8 @@ app.get('/objetos',(req,res)=>{
     // Display the file content 
    // var myarray = data.split('\r\n');
     //var html='';
-    var html=obtenerArrayObjetos();
+    var myarray=obtenerArrayObjetos();
+    var html='';
     for(var i = 0; i < myarray.length; i++)
       {
        html=html + myarray[i] + '<br>';
