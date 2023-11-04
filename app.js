@@ -13,10 +13,26 @@ app.post('/objetos',(req,res)=>{
         res.status(400);
         return res.send("Debe pasar los parametros CODIGO, NOMBRE, DESC y CATEGORIA");
   }else{
+    //guardo nuevo objeto en txt
+    guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     res.status(200);
     return res.send("Nombre: " + req.query.nombre);
   }
 });
+
+function guardarNuevoObjeto(codigo,nombre,desc,categoria){
+  
+  nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
+  fs.writeFile('test.txt', nuevoObj, err => {
+    if (err) {
+      //res.send('ERROR AL ESCRIBIR EL ARCHIVO! '+ err);
+      return false;
+    }
+    // file written successfully
+      return true; 
+  });
+};
+
 
 app.get('/objetos',(req,res)=>{
   res.send(req.method + ': listado de objetos');
@@ -35,7 +51,6 @@ app.get('/', (req, res) => {
           res.status(200);
           res.send(data + ' ' + req.method);
       }); 
-
     });
     
   });
