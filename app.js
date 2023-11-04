@@ -39,7 +39,7 @@ app.get('/objetos',(req,res)=>{
           var html='';
           for(var i = 0; i < myarray.length; i++)
           {
-            html=html + '<br>' + myarray[i];
+            html=html + myarray[i] + '<br>';
           }
           res.status(200);
           res.send(html);
