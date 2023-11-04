@@ -48,19 +48,14 @@ function obtenerArrayObjetos()
 
 app.get('/objetos',(req,res)=>{
   /***** OBTENGO UN LISTADO DE OBJETOS DEL SISTEMA ******/
-  //fs.readFile(pathArchivoTXT, 'utf8', function(err, data){ 
-    // Display the file content 
-   // var myarray = data.split('\r\n');
-    //var html='';
-    var myarray=obtenerArrayObjetos();
-    var html='';
-    for(var i = 0; i < myarray.length; i++)
-      {
-       html=html + myarray[i] + '<br>';
-      }
-      res.status(200);
-      res.send(html);
-  //});
+  var myarray=obtenerArrayObjetos();
+  var html='';
+  for(var i = 0; i < myarray.length; i++)
+    {
+      html=html + myarray[i] + '<br>';
+    }
+    res.status(200);
+    res.send(html);
 });
 
 app.delete('/objetos/:id',(req,res)=>{
