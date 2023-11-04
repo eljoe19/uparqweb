@@ -4,8 +4,6 @@ const port = process.env.PORT || 3000;
 
 const fs = require('fs');
 const pathArchivoTXT = 'dbObjetos.txt';
-var dbObjetos=[];
-
 
 app.post('/objetos',(req,res)=>{
   
@@ -28,8 +26,6 @@ app.post('/objetos',(req,res)=>{
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria + '\r\n';
-  dbObjetos.push(nuevoObj);
-    
   fs.appendFileSync(pathArchivoTXT, nuevoObj);
   return true;
 };
@@ -39,8 +35,14 @@ app.get('/objetos',(req,res)=>{
 // file written successfully
       fs.readFile(pathArchivoTXT, 'utf8', function(err, data){ 
           // Display the file content 
+          var myarray = data.split('\n\r');
+          var html='';
+          for(var i = 0; i < myarray.length; i++)
+          {
+            html=html + '<br>' + myarray[i];
+          }
           res.status(200);
-          res.send(data + 'DB MEM: \n\r' + dbObjetos.toString());
+          res.send(html);
       });
 });
 
