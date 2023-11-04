@@ -7,7 +7,7 @@ const content = 'Contenido del archivo de texto.';
 
 
 app.post('/objetos',(req,res)=>{
-  res.send(req.method + ': nuevo objeto');
+  res.send(req.query.nombre + ': nuevo objeto');
 
 
 });
