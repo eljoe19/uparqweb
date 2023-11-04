@@ -51,6 +51,12 @@ app.get('/objetos',(req,res)=>{
   });
 });
 
+app.delete('/objetos/:id',(req,res)=>{
+  /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
+  res.status(200);
+  res.send("pendiente implementar borrado de objeto");
+});
+
 app.get('/', (req, res) => {
    
   });
