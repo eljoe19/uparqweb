@@ -20,7 +20,7 @@ app.post('/objetos',(req,res)=>{
       return res.send("Nombre: " + valorRes);
     }else{
       res.status(400);
-      return res.send("No se pudo guardar el nuevo objeto.");
+      return res.send("No se pudo guardar el nuevo objeto. " + valorRes);
     };
     
   }
