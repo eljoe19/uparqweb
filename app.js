@@ -15,7 +15,7 @@ app.post('/objetos',(req,res)=>{
   }else{
     //guardo nuevo objeto en txt
     valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
-    if(valorRes==true){
+    if(valorRes){
       res.status(200);
       return res.send("Nombre: " + valorRes);
     }else{
