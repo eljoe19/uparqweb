@@ -7,10 +7,17 @@ const content = 'Contenido del archivo de texto.';
 
 
 app.post('/objetos',(req,res)=>{
-  res.send(req.query.nombre + ': nuevo objeto');
-
-
+  
+  //verifico que existan parametros
+  if(!req.params){
+        res.status(400);
+        return res.send("NO PARAMS PASSED");
+  }else{
+    res.status(200);
+    return res.send("Nombre: " + req.param.nombre);
+  }
 });
+
 app.get('/objetos',(req,res)=>{
   res.send(req.method + ': listado de objetos');
 });
