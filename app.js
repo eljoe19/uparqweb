@@ -14,7 +14,7 @@ app.post('/objetos',(req,res)=>{
         return res.send("NO PARAMS PASSED");
   }else{
     res.status(200);
-    return res.send("Nombre: " + req.param.nombre);
+    return res.send("Nombre: " + req.params.nombre);
   }
 });
 
