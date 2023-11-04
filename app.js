@@ -25,9 +25,14 @@ app.post('/objetos',(req,res)=>{
 });
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
+  //agrego objetos linea a linea en el txt  
   nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria + '\r\n';
-  fs.appendFileSync(pathArchivoTXT, nuevoObj);
-  return true;
+  try{
+    fs.appendFileSync(pathArchivoTXT, nuevoObj);
+    return true;
+  }catch(e){
+    return false;
+  }
 };
 
 
