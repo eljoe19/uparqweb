@@ -26,7 +26,7 @@ app.post('/objetos',(req,res)=>{
 });
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
-  nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
+  nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria + '\r\n';
   fs.appendFileSync(pathArchivoTXT, nuevoObj);
   return true;
 };
