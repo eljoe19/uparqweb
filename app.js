@@ -35,6 +35,15 @@ function guardarNuevoObjeto(codigo,nombre,desc,categoria){
     return false;
   }
 };
+function obtenerArrayObjetos()
+{
+  try{
+    data = fs.readFileSync(pathArchivoTXT,{ encoding: 'utf8', flag: 'r' });
+    return data;
+  }catch(e){
+    return false;
+  }
+}
 
 app.get('/objetos',(req,res)=>{
   /***** OBTENGO UN LISTADO DE OBJETOS DEL SISTEMA ******/
@@ -54,7 +63,7 @@ app.get('/objetos',(req,res)=>{
 app.delete('/objetos/:id',(req,res)=>{
   /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
   res.status(200);
-  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id);
+  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
 
 app.get('/', (req, res) => {
