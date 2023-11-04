@@ -9,9 +9,9 @@ const content = 'Contenido del archivo de texto.';
 app.post('/objetos',(req,res)=>{
   
   //verifico que existan parametros
-  if(!req.query || !req.query.nombre ){
+  if(!req.query || !req.query.codigo || !req.query.nombre || !req.query.desc || !req.query.categoria ){
         res.status(400);
-        return res.send("NO PARAMS PASSED");
+        return res.send("Debe pasar los parametros CODIGO, NOMBRE, DESC y CATEGORIA");
   }else{
     res.status(200);
     return res.send("Nombre: " + req.query.nombre);
