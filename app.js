@@ -14,24 +14,21 @@ app.post('/objetos',(req,res)=>{
         return res.send("Debe pasar los parametros CODIGO, NOMBRE, DESC y CATEGORIA");
   }else{
     //guardo nuevo objeto en txt
-    var valorTest=guardarNuevoObjeto2();
     var valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     if(valorRes){
       res.status(200);
-      return res.send("OK - ValorRes: " + valorRes + ' ValorTest: ' + valorTest);
+      return res.send("OK - ValorRes: " + valorRes);
     }else{
       res.status(400);
-      return res.send("No se pudo guardar el nuevo objeto. ValorRes: " + valorRes + ' ValorTest: ' + valorTest);
+      return res.send("No se pudo guardar el nuevo objeto. ValorRes: " + valorRes);
     };
  }
 });
 
-function guardarNuevoObjeto2(){
-    return true;
-};
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
-  nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
-  fs.writeFileSync(pathArchivoTXT, nuevoObj);
+  return true;
+  //nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
+  //fs.writeFileSync(pathArchivoTXT, nuevoObj);
 };
 
 
