@@ -9,12 +9,12 @@ const content = 'Contenido del archivo de texto.';
 app.post('/objetos',(req,res)=>{
   
   //verifico que existan parametros
-  if(!req.params || !req.params.nombre ){
+  if(!req.query || !req.query.nombre ){
         res.status(400);
         return res.send("NO PARAMS PASSED");
   }else{
     res.status(200);
-    return res.send("Nombre: " + req.params.nombre);
+    return res.send("Nombre: " + req.query.nombre);
   }
 });
 
