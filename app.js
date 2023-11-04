@@ -54,7 +54,7 @@ app.get('/objetos',(req,res)=>{
 app.delete('/objetos/:id',(req,res)=>{
   /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
   res.status(200);
-  res.send("pendiente implementar borrado de objeto");
+  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id);
 });
 
 app.get('/', (req, res) => {
