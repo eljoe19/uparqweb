@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const fs = require('fs');
-const pathArchivoTXT = 'dbObjetos.txt';
+const pathArchivoTXT = 'dbObjetos2.txt';
 
 app.post('/objetos',(req,res)=>{
   
