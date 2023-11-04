@@ -15,7 +15,7 @@ app.post('/objetos',(req,res)=>{
   }else{
     //guardo nuevo objeto en txt
     var valorTest=guardarNuevoObjeto2();
-    var valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
+    var valorRes= await guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     if(valorRes){
       res.status(200);
       return res.send("OK - ValorRes: " + valorRes + ' ValorTest: ' + valorTest);
@@ -23,14 +23,13 @@ app.post('/objetos',(req,res)=>{
       res.status(400);
       return res.send("No se pudo guardar el nuevo objeto. ValorRes: " + valorRes + ' ValorTest: ' + valorTest);
     };
-    
-  }
+ }
 });
 
 function guardarNuevoObjeto2(){
     return true;
 };
-function guardarNuevoObjeto(codigo,nombre,desc,categoria){
+async function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   
   nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria;
   fs.writeFile(pathArchivoTXT, nuevoObj, err => {
