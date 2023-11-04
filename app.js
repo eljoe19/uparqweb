@@ -39,7 +39,8 @@ function obtenerArrayObjetos()
 {
   try{
     data = fs.readFileSync(pathArchivoTXT,{ encoding: 'utf8', flag: 'r' });
-    return data;
+    var myarray = data.split('\r\n');
+    return myarray;
   }catch(e){
     return false;
   }
