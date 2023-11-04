@@ -35,7 +35,12 @@ function guardarNuevoObjeto(codigo,nombre,desc,categoria){
 
 
 app.get('/objetos',(req,res)=>{
-  res.send(req.method + ': listado de objetos');
+// file written successfully
+      fs.readFile('test.txt', 'utf8', function(err, data){ 
+          // Display the file content 
+          res.status(200);
+          res.send(data);
+      });
 });
 
 app.get('/', (req, res) => {
