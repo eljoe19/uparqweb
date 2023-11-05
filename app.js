@@ -63,7 +63,7 @@ app.get('/objetos',(req,res)=>{
   html=html+'</html>';
 
   //VERIFICO REQUEST PARA RESPONDER EN JSON O HTML
-  if (req.is('application/json')){
+  if (req.accepts('application/json')==='application/json'){
     res.status(200);
     res.setHeader('Content-Type', 'application/json');
     res.send(resJson);
@@ -98,7 +98,7 @@ app.get('/objetos/:id',(req,res)=>{
   html=html+'</html>';
 
   //VERIFICO REQUEST PARA RESPONDER EN JSON O HTML
-  if (req.is('application/json')){
+  if (req.accepts('application/json')==='application/json'){
     res.status(200);
     res.setHeader('Content-Type', 'application/json');
     res.send(resJson);
