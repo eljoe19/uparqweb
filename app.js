@@ -109,7 +109,7 @@ app.post('/alquileres/objetos/:id',(req,res)=>{
 
 app.get('/alquileres',(req,res)=>{
  /***** OBTENGO TODOS LOS ALQUILERES ******/
- var arrAlquileres=obtenerArrayObjetos(pathArchivoTXT);
+ var arrAlquileres=obtenerArrayObjetos(pathArchivoTXTReservas);
  var html='';
  for(var i = 0; i < arrAlquileres.length; i++)
    {
