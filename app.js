@@ -39,6 +39,7 @@ app.get('/objetos',(req,res)=>{
     {
       html=html + myarray[i] + '<br>';
     }
+    res.setHeader('Content-Type', 'application/json')
     res.status(200);
     res.send(html);
 });
