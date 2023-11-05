@@ -106,13 +106,13 @@ app.delete('/objetos/:id',(req,res)=>{
     {
       //verifico si es el objeto del request para no incluirlo en la nueva DB
       let tmp=arrObjetos[i].split(',');
-      if(tmp[0] !== req.params.id){
+      if(tmp[0] !== req.params.id && tmp[0]!==''){
         //si no es el objeto del request, lo agrego a la DB
         guardarNuevoObjeto(tmp[0],tmp[1],tmp[2],tmp[3]);
       }
     }
   res.status(200);
-  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id);
 });
 
 app.put('/objetos/:id',(req,res)=>{
