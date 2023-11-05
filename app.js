@@ -35,7 +35,6 @@ app.get('/objetos',(req,res)=>{
   /***** OBTENGO TODOS LOS OBJETOS DEL SISTEMA ******/
   var myarray=obtenerArrayObjetos(pathArchivoTXT);
   var html='<html>';
-
   var resJson = {} // empty Object
   var key = 'Objetos para Alquilar';
   resJson[key] = []; // empty Array, which you can push() values into
@@ -46,15 +45,22 @@ app.get('/objetos',(req,res)=>{
       var tmpJson=myarray[i].split(',');
       var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1]};
       resJson[key].push(resDataJson);
-
       //para html
       html=html + myarray[i] + '<br>';
     }
   html=html+'</html>';
-  //res.setHeader('Content-Type', 'application/json')
-  res.status(200);
-  //res.send(resJson);
-  res.send(html);
+
+  //VERIFICO REQUEST PARA RESPONDER EN JSON O HTML
+  if (req.is('application/json')){
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(resJson);
+  }else{
+    res.status(200);
+    res.setHeader('Content-Type', 'text/html');
+    res.send(html);
+  }  
+
 });
 
 app.get('/objetos/:id',(req,res)=>{
