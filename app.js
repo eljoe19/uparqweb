@@ -100,10 +100,10 @@ app.get('/objetos/:id',(req,res)=>{
 app.delete('/objetos/:id',(req,res)=>{
   /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
   
+  //obtengo objetos de la DB
+  var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
   //vacio DB
   vaciarDB();
-  //obtengo objetos
-  var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
   for(var i = 0; i < arrObjetos.length; i++)
     {
       //verifico si es el objeto del request para no incluirlo en la nueva DB
