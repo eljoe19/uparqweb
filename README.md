@@ -10,19 +10,15 @@ El sistema podrá generar un reporte de stock indicando el estado de cada cosa (
 
 **API ENDPOINTS**  
 **---- CRUD de objetos para ser alquilados ---**  
-Crear nuevo objeto: POST /api/v1/objetos?nombre=xxx&descripcion=xxx&categoria=xxx  
-Actualizar objeto: PUT /api/v1/objetos/id_objeto?nombre=xxx&descripcion=xxx&categoria=xxx  
-Borrar un objeto: DELETE /api/v1/objetos/id_objeto  
-Obtener un objeto: GET /api/v1/objetos/id_objeto  
+Crear nuevo objeto: POST /objetos?codigo=xxx&nombre+xxx&desc=xxx&categoria=xxx  
+Actualizar objeto: PUT /objetos/id_objeto?codigo=xxx&nombre+xxx&desc=xxx&categoria=xxx 
+Borrar un objeto: DELETE /objetos/id_objeto  
+Obtener un objeto: GET /objetos/id_objeto
+Obtener todos los objetos: /api/v1/objetos
+Obtener todos los objetos de una categoria:/objetos?categoria=xxx
 
 **---- Gestionar Alquiler/Devolucion ----**  
-Alquilar un objeto: POST /api/v1/alquileres/id_objeto?fecha_inicio=xxxx&fecha_fin=xxx  
-Registrar devolucion: POST /api/v1/devoluciones/id_objeto?fecha_devolucion=xxxx
-
-**---- Listado de Stock ----**  
-Obtener todos los objetos: /api/v1/objetos
-Obtener todos los objetos de una categoria:/api/v1/objetos?categoria=xxx
-
-**---- Listado de Alquileres Activos ----**  
-Obtener listado de objetos alquilados: GET /api/v1/alquileres
+Alquilar un objeto: POST /alquileres/objetos/id_objeto?idclie=xxx&desde=yyyymmdd&hasta=yyyymmdd  
+Obtener listado de objetos alquilados: GET /alquileres
+Obtener listado de objetos alquilados de un cliente GET /alquileres/clientes/id_cliente
 
