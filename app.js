@@ -60,11 +60,44 @@ app.get('/objetos',(req,res)=>{
     res.setHeader('Content-Type', 'text/html');
     res.send(html);
   }  
-
 });
 
 app.get('/objetos/:id',(req,res)=>{
   /***** OBTENGO UN SOLO OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
+  var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
+  var html='<html>';
+  var resJson = {} // empty Object
+  var key = 'Objetos para Alquilar';
+  resJson[key] = []; // empty Array, which you can push() values into
+
+  for(var i = 0; i < arrObjetos.length; i++)
+    {
+      //verifico si es el objeto del request
+      let tmp=arrObjetos[i].split(',');
+      if(tmp[0] === req.params.id){
+        //para json
+        var tmpJson=arrObjetos[i].split(',');
+        var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1]};
+        resJson[key].push(resDataJson);
+        //para html
+        html=html + arrObjetos[i] + '<br>';
+      }
+    }
+  html=html+'</html>';
+
+  //VERIFICO REQUEST PARA RESPONDER EN JSON O HTML
+  if (req.is('application/json')){
+    res.status(200);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(resJson);
+  }else{
+    res.status(200);
+    res.setHeader('Content-Type', 'text/html');
+    res.send(html);
+  }  
+
+
+
   res.status(200);
   res.send("pendiente implementar mostrar un solo objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
