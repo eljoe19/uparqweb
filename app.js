@@ -5,6 +5,11 @@ const port = process.env.PORT || 3000;
 const fs = require('fs');
 const pathArchivoTXT = 'dbObjetos2.txt';
 
+
+/***************************************/
+/********* CRUD DE OBJETOS *************/
+/**************************************/
+
 app.post('/objetos',(req,res)=>{
   /***** AGREGO UN OBJETO AL SISTEMA ******/
 
@@ -24,6 +29,32 @@ app.post('/objetos',(req,res)=>{
     };
  }
 });
+
+app.get('/objetos',(req,res)=>{
+  /***** OBTENGO TODOS LOS OBJETOS DEL SISTEMA ******/
+  var myarray=obtenerArrayObjetos();
+  var html='';
+  for(var i = 0; i < myarray.length; i++)
+    {
+      html=html + myarray[i] + '<br>';
+    }
+    res.status(200);
+    res.send(html);
+});
+
+app.get('/objetos/:id',(req,res)=>{
+  /***** OBTENGO UN SOLO OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
+  res.status(200);
+  res.send("pendiente implementar mostrar un solo objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+});
+
+app.delete('/objetos/:id',(req,res)=>{
+  /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
+  res.status(200);
+  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+});
+
+
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   //agrego objetos linea a linea en el txt  
@@ -46,23 +77,6 @@ function obtenerArrayObjetos()
   }
 }
 
-app.get('/objetos',(req,res)=>{
-  /***** OBTENGO UN LISTADO DE OBJETOS DEL SISTEMA ******/
-  var myarray=obtenerArrayObjetos();
-  var html='';
-  for(var i = 0; i < myarray.length; i++)
-    {
-      html=html + myarray[i] + '<br>';
-    }
-    res.status(200);
-    res.send(html);
-});
-
-app.delete('/objetos/:id',(req,res)=>{
-  /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
-  res.status(200);
-  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
-});
 
 app.get('/', (req, res) => {
    
