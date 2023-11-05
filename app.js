@@ -23,30 +23,30 @@ app.post('/objetos',(req,res)=>{
     var valorRes=guardarNuevoObjeto(req.query.codigo,req.query.nombre,req.query.desc,req.query.categoria);
     if(valorRes){
       res.status(200);
-      return res.send("OK - ValorRes: " + valorRes);
+      return res.send("Objeto agregado.");
     }else{
       res.status(400);
-      return res.send("No se pudo guardar el nuevo objeto. ValorRes: " + valorRes);
+      return res.send("No se pudo guardar el nuevo objeto");
     };
  }
 });
 
 app.get('/objetos',(req,res)=>{
   /***** OBTENGO TODOS LOS OBJETOS DEL SISTEMA ******/
-  var myarray=obtenerArrayObjetos(pathArchivoTXT);
+  var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
   var html='<html>';
   var resJson = {} // empty Object
   var key = 'Objetos para Alquilar';
   resJson[key] = []; // empty Array, which you can push() values into
 
-  for(var i = 0; i < myarray.length; i++)
+  for(var i = 0; i < arrObjetos.length; i++)
     {
       //para json
-      var tmpJson=myarray[i].split(',');
+      var tmpJson=arrObjetos[i].split(',');
       var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1]};
       resJson[key].push(resDataJson);
       //para html
-      html=html + myarray[i] + '<br>';
+      html=html + arrObjetos[i] + '<br>';
     }
   html=html+'</html>';
 
