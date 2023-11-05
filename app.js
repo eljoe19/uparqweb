@@ -43,14 +43,18 @@ app.get('/objetos',(req,res)=>{
   for(var i = 0; i < myarray.length; i++)
     {
       //para json
-      
+      var tmpJson=myarray[i].split(',');
+      var resDataJson={Codigo:tmpJson[0],Cliente:tmpJson[1]};
+      resJson[key].push(resDataJson);
+
       //para html
       html=html + myarray[i] + '<br>';
     }
   html=html+'</html>';
-  //res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Content-Type', 'application/json')
   res.status(200);
-  res.send(html);
+  res.send(resJson);
+  //res.send(html);
 });
 
 app.get('/objetos/:id',(req,res)=>{
