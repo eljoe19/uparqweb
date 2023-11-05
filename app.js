@@ -95,15 +95,22 @@ app.get('/objetos/:id',(req,res)=>{
     res.setHeader('Content-Type', 'text/html');
     res.send(html);
   }  
-
-
-
-  res.status(200);
-  res.send("pendiente implementar mostrar un solo objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
 
 app.delete('/objetos/:id',(req,res)=>{
   /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
+  
+  //obtengo objetos
+  var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
+  for(var i = 0; i < arrObjetos.length; i++)
+    {
+      //verifico si es el objeto del request para no incluirlo en la nueva DB
+      let tmp=arrObjetos[i].split(',');
+      if(!tmp[0] === req.params.id){
+        //lo agrego a la DB
+        guardarNuevoObjeto(tmp[0],tmp[1],tmp[2],tmp[3]);
+      }
+    }
   res.status(200);
   res.send("pendiente implementar borrado de objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
