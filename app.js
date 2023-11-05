@@ -34,14 +34,23 @@ app.post('/objetos',(req,res)=>{
 app.get('/objetos',(req,res)=>{
   /***** OBTENGO TODOS LOS OBJETOS DEL SISTEMA ******/
   var myarray=obtenerArrayObjetos(pathArchivoTXT);
-  var html='';
+  var html='<html>';
+
+  var resJson = {} // empty Object
+  var key = 'Objetos para Alquilar';
+  resJson[key] = []; // empty Array, which you can push() values into
+
   for(var i = 0; i < myarray.length; i++)
     {
+      //para json
+      
+      //para html
       html=html + myarray[i] + '<br>';
     }
-    res.setHeader('Content-Type', 'application/json')
-    res.status(200);
-    res.send(html);
+  html=html+'</html>';
+  //res.setHeader('Content-Type', 'application/json')
+  res.status(200);
+  res.send(html);
 });
 
 app.get('/objetos/:id',(req,res)=>{
