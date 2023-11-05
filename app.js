@@ -124,7 +124,8 @@ app.put('/objetos/:id',(req,res)=>{
 });
 
 function vaciarDB(){
-  fs.writeFileSync(pathArchivoTXT, '');
+  //fs.writeFileSync(pathArchivoTXT, '');
+  fs.unlinkSync(pathArchivoTXT);
 };
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
