@@ -43,7 +43,7 @@ app.get('/objetos',(req,res)=>{
     {
       //para json
       var tmpJson=arrObjetos[i].split(',');
-      var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1]};
+      var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1],Desc:tmpJson[2],Categoria:tmpJson[3]};
       resJson[key].push(resDataJson);
       //para html
       html=html + arrObjetos[i] + '<br>';
@@ -77,7 +77,7 @@ app.get('/objetos/:id',(req,res)=>{
       if(tmp[0] === req.params.id){
         //para json
         var tmpJson=arrObjetos[i].split(',');
-        var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1]};
+        var resDataJson={Codigo:tmpJson[0],Producto:tmpJson[1],Desc:tmpJson[2],Categoria:tmpJson[3]};
         resJson[key].push(resDataJson);
         //para html
         html=html + arrObjetos[i] + '<br>';
