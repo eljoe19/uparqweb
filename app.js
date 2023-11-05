@@ -100,6 +100,8 @@ app.get('/objetos/:id',(req,res)=>{
 app.delete('/objetos/:id',(req,res)=>{
   /***** BORRO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
   
+  //vacio DB
+  vaciarDB();
   //obtengo objetos
   var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
   for(var i = 0; i < arrObjetos.length; i++)
@@ -120,6 +122,10 @@ app.put('/objetos/:id',(req,res)=>{
   res.status(200);
   res.send("pendiente implementar actualizacion de un objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
+
+function vaciarDB(){
+  fs.writeFileSync(pathArchivoTXT, '');
+};
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   //agrego objetos linea a linea en el txt  
