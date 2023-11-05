@@ -54,6 +54,12 @@ app.delete('/objetos/:id',(req,res)=>{
   res.send("pendiente implementar borrado de objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
 
+app.put('/objetos/:id',(req,res)=>{
+  /***** ACTUALIZO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
+  res.status(200);
+  res.send("pendiente implementar actualizacion de un objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+});
+
 
 
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
