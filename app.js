@@ -136,6 +136,8 @@ function obtenerArrayObjetos(pathDB)
   try{
     data = fs.readFileSync(pathDB,{ encoding: 'utf8', flag: 'r' });
     var myarray = data.split('\r\n');
+    //elimino la ultima entrada ya que es un vacio dsps del ultimo nr
+    myarray.pop();
     return myarray;
   }catch(e){
     return false;
