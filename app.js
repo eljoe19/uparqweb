@@ -114,13 +114,36 @@ app.delete('/objetos/:id',(req,res)=>{
       }
     }
   res.status(200);
-  res.send("Se ha eliminado del catalogo objeto con ID: " + req.params.id);
+  res.send("Se ha eliminado del catalogo el objeto con ID: " + req.params.id);
 });
 
 app.put('/objetos/:id',(req,res)=>{
   /***** ACTUALIZO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
-  res.status(200);
-  res.send("pendiente implementar actualizacion de un objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+  //obtengo objetos de la DB
+
+  //verifico que existan parametros
+  if(!req.query || !req.query.nombre || !req.query.desc || !req.query.categoria ){
+    res.status(400);
+    return res.send("Debe pasar los parametros NOMBRE, DESC y CATEGORIA");
+  }else{
+    var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
+    //vacio DB
+    vaciarDB();
+    for(var i = 0; i < arrObjetos.length; i++)
+      {
+        //verifico si es el objeto del request que debo actualizar
+        let tmp=arrObjetos[i].split(',');
+        if(tmp[0] === req.params.id){
+          //es el objeto del request, guardo con modificaciones
+          guardarNuevoObjeto(tmp[0],req.query.nombre,req.query.desc,req.query.categoria);
+        }else{
+          //guardo sin modificaciones
+          guardarNuevoObjeto(tmp[0],tmp[1],tmp[2],tmp[3]);
+        }
+      }
+    res.status(200);
+    res.send("pendiente implementar actualizacion de un objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+  }
 });
 
 function vaciarDB(){
