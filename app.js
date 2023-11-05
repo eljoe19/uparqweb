@@ -114,7 +114,7 @@ app.delete('/objetos/:id',(req,res)=>{
       }
     }
   res.status(200);
-  res.send("pendiente implementar borrado de objeto con ID: " + req.params.id);
+  res.send("Se ha eliminado del catalogo objeto con ID: " + req.params.id);
 });
 
 app.put('/objetos/:id',(req,res)=>{
@@ -124,7 +124,6 @@ app.put('/objetos/:id',(req,res)=>{
 });
 
 function vaciarDB(){
-  //fs.writeFileSync(pathArchivoTXT, '');
   fs.unlinkSync(pathArchivoTXT);
 };
 
