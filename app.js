@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const fs = require('fs');
-const pathArchivoTXT = 'dbObjetos2.txt';
+const pathArchivoTXT = 'dbObjetos3.txt';
 const pathArchivoTXTReservas='dbReservas.txt';
 
 
