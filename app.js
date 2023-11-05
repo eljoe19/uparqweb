@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000;
 
 const fs = require('fs');
 const pathArchivoTXT = 'dbObjetos2.txt';
+const pathArchivoTXTReservas='dbReservas.txt';
 
 
 /***************************************/
@@ -60,8 +61,6 @@ app.put('/objetos/:id',(req,res)=>{
   res.send("pendiente implementar actualizacion de un objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
 });
 
-
-
 function guardarNuevoObjeto(codigo,nombre,desc,categoria){
   //agrego objetos linea a linea en el txt  
   nuevoObj= codigo + ',' + nombre + ',' + desc + ',' + categoria + '\r\n';
@@ -82,6 +81,43 @@ function obtenerArrayObjetos()
     return false;
   }
 }
+
+/***************************************/
+/********* ALQUILERES DE OBJETOS *************/
+/**************************************/
+app.post('/alquileres/objetos/:id',(req,res)=>{
+  /***** REGISTRO EL ALQUILER DE UN OBJETO DEL SISTEMA ******/
+  //verifico que existan parametros
+  if(!req.query || !req.query.desde || !req.query.hasta || !req.query.idclie){
+        res.status(400);
+        return res.send("Debe pasar los parametros DESDE, HASTA, IDCLIE");
+  }else{
+
+    //verifico que objeto exista
+
+    //guardo nueva reserva en db
+    var valorRes=guardarNuevaReserva(req.params.id,req.query.idclie,req.query.desde,req.query.hasta);
+    if(valorRes){
+      res.status(200);
+      return res.send("Reserva realizada.");
+    }else{
+      res.status(400);
+      return res.send("No se pudo realizar la reserva");
+    };
+ }
+});
+
+function guardarNuevaReserva(codigoProd,idClie,desde,hasta){
+  //agrego objetos linea a linea en el txt  
+  nuevoObj= codigoProd + ',' + idClie + ',' + desde + ',' + hasta + '\r\n';
+  try{
+    fs.appendFileSync(pathArchivoTXTReservas, nuevoObj);
+    return true;
+  }catch(e){
+    return false;
+  }
+};
+
 
 
 app.get('/', (req, res) => {
