@@ -131,7 +131,6 @@ app.get('/alquileres/clientes/:idclie',(req,res)=>{
       {
         html=html + arrAlquileres[i] + '<br>';
       }
-      //html=html + '-' + tmp[1];
     }
     res.status(200);
     res.send(html);
