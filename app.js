@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const fs = require('fs');
-const pathArchivoTXT = 'dbObjetos3.txt';
+const pathArchivoTXT = 'dbObjetos4.txt';
 const pathArchivoTXTReservas='dbReservas.txt';
 
 
@@ -106,8 +106,8 @@ app.delete('/objetos/:id',(req,res)=>{
     {
       //verifico si es el objeto del request para no incluirlo en la nueva DB
       let tmp=arrObjetos[i].split(',');
-      if(tmp[0] !== req.params.id && tmp[0]!==''){
-        //si no es el objeto del request, lo agrego a la DB
+      if(tmp[0] !== req.params.id){
+        //si no es el objeto del request, lo vuelvo a agregar a la DB
         guardarNuevoObjeto(tmp[0],tmp[1],tmp[2],tmp[3]);
       }
     }
