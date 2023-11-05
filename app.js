@@ -6,6 +6,13 @@ const fs = require('fs');
 const pathArchivoTXT = 'dbObjetos4.txt';
 const pathArchivoTXTReservas='dbReservas.txt';
 
+// MIDDLEWARE
+const verificoRequest = function (req, res, next) {
+  res.send('LOGGED');
+  //next()
+}
+
+app.use(verificoRequest);
 
 /***************************************/
 /********* CRUD DE OBJETOS *************/
