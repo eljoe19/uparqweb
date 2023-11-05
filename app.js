@@ -117,9 +117,25 @@ app.get('/alquileres',(req,res)=>{
    }
    res.status(200);
    res.send(html);
-
-
 });
+
+app.get('/alquileres/clientes/:idclie',(req,res)=>{
+  /***** OBTENGO TODOS LOS ALQUILERES DE UN CLIENTE ******/
+  var arrAlquileres=obtenerArrayObjetos(pathArchivoTXTReservas);
+  var html='';
+  for(var i = 0; i < arrAlquileres.length; i++)
+    {
+      //verifico si la reserva es del cliente
+      let tmp=arrAlquileres[i].split(',');
+      if(tmp[1] === req.params.idclie)
+      {
+        html=html + arrAlquileres[i] + '<br>';
+      }
+    }
+    res.status(200);
+    res.send(html);
+ });
+
 
 function guardarNuevaReserva(codigoProd,idClie,desde,hasta){
   //agrego objetos linea a linea en el txt  
