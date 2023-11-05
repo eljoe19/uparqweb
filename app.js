@@ -106,9 +106,8 @@ app.delete('/objetos/:id',(req,res)=>{
     {
       //verifico si es el objeto del request para no incluirlo en la nueva DB
       let tmp=arrObjetos[i].split(',');
-      guardarNuevoObjeto(tmp[0],tmp[1],tmp[2],tmp[3]);
-      if(!tmp[0] === req.params.id){
-        //lo agrego a la DB
+      if(tmp[0] !== req.params.id){
+        //si no es el objeto del request, lo agrego a la DB
         guardarNuevoObjeto(tmp[0],tmp[1],tmp[2],tmp[3]);
       }
     }
