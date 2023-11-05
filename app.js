@@ -254,7 +254,7 @@ function guardarNuevaReserva(codigoProd,idClie,desde,hasta){
 
 
 app.get('/', (req, res) => {
-  res.send('<html><h1>Bienvenido al Catalogo de Objetos de Fiesta para Alquiler</h1><br><p>Verifique como usar la api en https://github.com/eljoe19/uparqweb</p></html>'); 
+  res.send('<html><br><h1>Bienvenido al Catalogo de Objetos de Fiesta para Alquiler</h1><p><h2>Verifique como usar la api en https://github.com/eljoe19/uparqweb</h2></p></html>'); 
   });
 
 app.listen(port, () => {
