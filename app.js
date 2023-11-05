@@ -9,11 +9,11 @@ const pathArchivoTXTReservas='dbReservas.txt';
 // MIDDLEWARE
 const verificoRequest = function (req, res, next) {
   /* Verifico que todos los requests pidan json o html*/
-  if (req.is('application/json') || req.is('text/html')){
+  if (req.accepts('application/json')==='application/json'){
     next();
   }else{
     res.status(400);
-    res.send('Solo se permiten requests json o html.');
+    res.send('Solo se permiten requests json o html. j ' + req.accepts('application/json') + ' ht ' + req.accepts('text/html') );
   }
 }
 
