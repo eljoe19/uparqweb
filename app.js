@@ -119,13 +119,13 @@ app.delete('/objetos/:id',(req,res)=>{
 
 app.put('/objetos/:id',(req,res)=>{
   /***** ACTUALIZO UN OBJETO DEL LISTADO DE OBJETOS DEL SISTEMA ******/
-  //obtengo objetos de la DB
-
+  
   //verifico que existan parametros
   if(!req.query || !req.query.nombre || !req.query.desc || !req.query.categoria ){
     res.status(400);
     return res.send("Debe pasar los parametros NOMBRE, DESC y CATEGORIA");
   }else{
+    //obtengo objetos de la DB
     var arrObjetos=obtenerArrayObjetos(pathArchivoTXT);
     //vacio DB
     vaciarDB();
@@ -142,7 +142,7 @@ app.put('/objetos/:id',(req,res)=>{
         }
       }
     res.status(200);
-    res.send("pendiente implementar actualizacion de un objeto con ID: " + req.params.id + ' data: ' + obtenerArrayObjetos());
+    res.send("Se ha actualizado en el catalogo el objeto con ID: " + req.params.id);
   }
 });
 
