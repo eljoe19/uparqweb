@@ -254,21 +254,7 @@ function guardarNuevaReserva(codigoProd,idClie,desde,hasta){
 
 
 app.get('/', (req, res) => {
-   
-  });
-
-app.get('/bienvenido', (req, res) => {
-  //res.send('Bienvenido!');
-  fs.readFile('test.txt', 'utf8', function(err, data){ 
-    // Display the file content 
-    res.send(data);
-}); 
-
-
-});
-
-app.get('/alumno', (req, res) => {
-    res.send('Soy un alumno');
+  res.send('<html><header>Bienvenido al Catalogo de Objetos de Fiesta para Alquiler</html>'); 
   });
 
 app.listen(port, () => {
