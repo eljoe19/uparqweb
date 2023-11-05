@@ -33,7 +33,7 @@ app.post('/objetos',(req,res)=>{
 
 app.get('/objetos',(req,res)=>{
   /***** OBTENGO TODOS LOS OBJETOS DEL SISTEMA ******/
-  var myarray=obtenerArrayObjetos();
+  var myarray=obtenerArrayObjetos(pathArchivoTXT);
   var html='';
   for(var i = 0; i < myarray.length; i++)
     {
@@ -71,10 +71,10 @@ function guardarNuevoObjeto(codigo,nombre,desc,categoria){
     return false;
   }
 };
-function obtenerArrayObjetos()
+function obtenerArrayObjetos(pathDB)
 {
   try{
-    data = fs.readFileSync(pathArchivoTXT,{ encoding: 'utf8', flag: 'r' });
+    data = fs.readFileSync(pathDB,{ encoding: 'utf8', flag: 'r' });
     var myarray = data.split('\r\n');
     return myarray;
   }catch(e){
@@ -105,6 +105,20 @@ app.post('/alquileres/objetos/:id',(req,res)=>{
       return res.send("No se pudo realizar la reserva");
     };
  }
+});
+
+app.get('/alquileres',(req,res)=>{
+ /***** OBTENGO TODOS LOS ALQUILERES ******/
+ var arrAlquileres=obtenerArrayObjetos(pathArchivoTXT);
+ var html='';
+ for(var i = 0; i < arrAlquileres.length; i++)
+   {
+     html=html + arrAlquileres[i] + '<br>';
+   }
+   res.status(200);
+   res.send(html);
+
+
 });
 
 function guardarNuevaReserva(codigoProd,idClie,desde,hasta){
